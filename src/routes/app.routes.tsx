@@ -7,20 +7,24 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import Dashboard from '../pages/Dashboard';
 import Cart from '../pages/Cart';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 import Logo from '../assets/logo.png';
 
-const App = createStackNavigator();
+const Auth = createStackNavigator();
 
-const AppRoutes: React.FC = () => (
-  <App.Navigator
+const AuthRoutes: React.FC = () => (
+  <Auth.Navigator
     screenOptions={{
-      headerShown: true,
-      cardStyle: { backgroundColor: '#EBEEF8' },
+      headerShown: false,
+      cardStyle: { backgroundColor: '#312e38' },
     }}
-    initialRouteName="Dashboard"
   >
-    <App.Screen
+    <Auth.Screen name="SignIn" component={SignIn} />
+    <Auth.Screen name="SignUp" component={SignUp} />
+
+    {/* <Auth.Screen
       options={{
         headerShown: true,
         headerTransparent: true,
@@ -29,7 +33,7 @@ const AppRoutes: React.FC = () => (
       name="Dashboard"
       component={Dashboard}
     />
-    <App.Screen
+    <Auth.Screen
       options={{
         headerTransparent: true,
         headerTitle: () => <Image source={Logo} />,
@@ -42,8 +46,8 @@ const AppRoutes: React.FC = () => (
       }}
       name="Cart"
       component={Cart}
-    />
-  </App.Navigator>
+    /> */}
+  </Auth.Navigator>
 );
 
-export default AppRoutes;
+export default AuthRoutes;
