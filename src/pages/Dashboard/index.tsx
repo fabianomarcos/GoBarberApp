@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import { View, Image } from 'react-native';
+import { View, Button } from 'react-native';
 
 import formatValue from '../../utils/formatValue';
-import { useCart } from '../../hooks/cart';
-import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import FloatingCart from '../../components/FloatingCart';
 
@@ -29,7 +28,7 @@ interface Product {
 }
 
 const Dashboard: React.FC = () => {
-  const { addToCart } = useCart();
+  const { signOut } = useAuth();
 
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -73,6 +72,9 @@ const Dashboard: React.FC = () => {
         />
       </ProductContainer>
       <FloatingCart />
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Button title="Sair" onPress={signOut} />
+      </View>
     </Container>
   );
 };

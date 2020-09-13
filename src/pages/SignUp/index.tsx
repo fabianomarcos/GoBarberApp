@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TextInput,
-  Alert
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +21,8 @@ import logoImg from '../../assets/logo.png';
 
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
+
 interface SignUpFormData {
   name: string;
   email: string;
@@ -50,10 +52,14 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        /* await api.post('/users', data);
+        await api.post('/users', data);
 
-        history.push('/'); */
+        Alert.alert(
+          'Cadastro realizado com sucesso.',
+          'Você já pode fazer o logon.',
+        );
 
+        navigation.goBack();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -66,7 +72,7 @@ const SignUp: React.FC = () => {
         Alert.alert(
           'Erro na autenticação',
           'Ocorreu algum erro ao fazer login, cheque as credenciais',
-        )
+        );
 
         /* addToast({
           type: 'error',
@@ -75,7 +81,7 @@ const SignUp: React.FC = () => {
         }); */
       }
     },
-    [],
+    [navigation],
   );
 
   return (
