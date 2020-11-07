@@ -1,65 +1,35 @@
 import styled from 'styled-components/native';
-import { FlatList } from 'react-native';
-
-interface Product {
-  id: string;
-  title: string;
-  image_url: string;
-  price: number;
-}
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
 `;
 
-export const ProductContainer = styled.View`
-  border-radius: 5px;
-  margin-top: 60px;
-  flex: 1;
-  flex-direction: row;
-`;
+export const Header = styled.View`
+  padding: 24px;
+  padding-top: ${getStatusBarHeight() + 24}px;
+  background: #28262e;
 
-export const ProductList = styled(
-  FlatList as new () => FlatList<Product>,
-).attrs({
-  numColumns: 2,
-})`
-  flex: 1;
-  padding: 0 10px;
-`;
-
-export const Product = styled.View`
-  background: #fff;
-  padding: 16px 16px;
-  border-radius: 5px;
-  margin: 8px;
-  flex: 1;
-`;
-
-export const ProductImage = styled.Image`
-  height: 122px;
-  width: 122px;
-  align-self: center;
-`;
-
-export const ProductTitle = styled.Text`
-  font-size: 14px;
-  margin-top: 10px;
-`;
-
-export const PriceContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
-  margin-top: auto;
 `;
 
-export const ProductPrice = styled.Text`
-  font-weight: bold;
-  font-size: 16px;
-  color: #e83f5b;
+export const HeaderTitle = styled.Text`
+  color: #f4ede8;
+  font-size: 20px;
+  font-family: 'RobotoSlab-Regular';
+  line-height: 28px;
 `;
 
-export const ProductButton = styled.TouchableOpacity``;
+export const UserName = styled.Text`
+  color: #ff9000;
+  font-family: 'RobotoSlab-Regular';
+`;
+
+export const ProfileButton = styled.TouchableOpacity``;
+export const UserAvatar = styled.Image`
+  width: 56px;
+  height: 56px;
+`;
